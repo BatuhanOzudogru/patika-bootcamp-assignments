@@ -27,7 +27,7 @@ public class SinifGecmeDurumu {
            sisteme dahil ediyoruz. Değilse dersin notunu 0 a çekiyoruz.*/
 
 
-        if (0<mat && mat<100)
+        if (0<=mat && mat<=100)
         {
             toplamDers ++;
 
@@ -37,7 +37,7 @@ public class SinifGecmeDurumu {
             mat=0;
             System.out.println("Matematik notunuzu yanlış girdiniz.Ortalamaya dahil edilmedi.");
         }
-        if (0<fizik && fizik<100)
+        if (0<=fizik && fizik<=100)
         {
             toplamDers ++;
 
@@ -47,7 +47,7 @@ public class SinifGecmeDurumu {
             fizik=0;
             System.out.println("Fizik notunuzu yanlış girdiniz.Ortalamaya dahil edilmedi.");
         }
-        if (0<turkce && turkce<100)
+        if (0<=turkce && turkce<=100)
         {
             toplamDers ++;
 
@@ -57,7 +57,7 @@ public class SinifGecmeDurumu {
             turkce=0;
             System.out.println("Türkçe notunuzu yanlış girdiniz.Ortalamaya dahil edilmedi.");
         }
-        if (0<kimya && kimya<100)
+        if (0<=kimya && kimya<=100)
         {
             toplamDers ++;
 
@@ -67,7 +67,7 @@ public class SinifGecmeDurumu {
             kimya=0;
             System.out.println("Kimya notunuzu yanlış girdiniz.Ortalamaya dahil edilmedi.");
         }
-        if (0<muzik && muzik<100)
+        if (0<=muzik && muzik<=100)
         {
             toplamDers ++;
 
