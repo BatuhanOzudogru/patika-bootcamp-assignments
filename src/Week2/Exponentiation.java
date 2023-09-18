@@ -11,7 +11,7 @@ public class Exponentiation {
 
         int result=1;
 
-        if(a!=0 && b!=0){
+        if(a!=0 ){
 
             for(int i=1;i<=b;i++)
             {
@@ -19,7 +19,7 @@ public class Exponentiation {
             }
             System.out.println("Üs sonuç: " +result);
             return usAlma(a,b);
-        }else if (a==0 && b!=0) {
+        }else if (b!=0) {
             int sifirUssuX = 1;
             System.out.println("Üs sonuç: " +sifirUssuX);
             return usAlma(a,b);
