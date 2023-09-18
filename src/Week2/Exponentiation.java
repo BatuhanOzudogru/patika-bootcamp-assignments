@@ -20,8 +20,8 @@ public class Exponentiation {
             System.out.println("Üs sonuç: " +result);
             return usAlma(a,b);
         }else if (a==0 && b!=0) {
-            int istisna = 1;
-            System.out.println("Üs sonuç: " +istisna);
+            int sifirUssuX = 1;
+            System.out.println("Üs sonuç: " +sifirUssuX);
             return usAlma(a,b);
         }
         else{System.out.println("BELİRSİZ");}
