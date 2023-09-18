@@ -18,9 +18,13 @@ public class Exponentiation {
                 result*=a;
             }
             System.out.println("Üs sonuç: " +result);
-
             return usAlma(a,b);
-        }else{System.out.println("BELİRSİZ");}
+        }else if (a==0 && b!=0) {
+            int istisna = 1;
+            System.out.println("Üs sonuç: " +istisna);
+            return usAlma(a,b);
+        }
+        else{System.out.println("BELİRSİZ");}
 
         return 0;
 
