@@ -1,3 +1,4 @@
+package Week2.obs.src;
 public class Main {
     public static void main(String[] args) {
         Course fiz=new Course("Fizik","111","FZK");

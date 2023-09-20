@@ -1,3 +1,4 @@
+package Week2.obs.src;
 public class Course {
     Teacher teacher;
     String name;
