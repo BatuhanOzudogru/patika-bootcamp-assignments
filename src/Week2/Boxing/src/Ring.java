@@ -1,3 +1,5 @@
+package Week2.Boxing.src;
+
 public class Ring {
     int maxWeight;
     int minWeight;

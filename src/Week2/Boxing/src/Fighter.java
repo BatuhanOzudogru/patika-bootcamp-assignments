@@ -1,3 +1,5 @@
+package Week2.Boxing.src;
+
 public class Fighter {
     String name;
     int damage;

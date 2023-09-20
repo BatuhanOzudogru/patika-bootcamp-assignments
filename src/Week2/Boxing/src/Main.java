@@ -1,3 +1,5 @@
+package Week2.Boxing.src;
+
 public class Main {
     public static void main(String[] args) {
         Fighter f1 =new Fighter("Boxer 1",10,85,85,10);
