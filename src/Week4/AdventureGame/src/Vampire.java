@@ -1,3 +1,4 @@
+package Week4.AdventureGame.src;
 public class Vampire extends Obstacle{
 
     public Vampire() {

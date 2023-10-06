@@ -1,3 +1,4 @@
+package Week4.AdventureGame.src;
 public class Forest extends BattleLocation{
 
     public Forest(Player player) {

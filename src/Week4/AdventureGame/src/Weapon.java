@@ -1,3 +1,4 @@
+package Week4.AdventureGame.src;
 public class Weapon {
     String name;
     int id;

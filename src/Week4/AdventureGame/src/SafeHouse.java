@@ -1,3 +1,4 @@
+package Week4.AdventureGame.src;
 public class SafeHouse extends NormalLocation{
     public SafeHouse(Player player) {
         super(player, "Güvenli Ev\uD83C\uDFDA\uFE0F",1);

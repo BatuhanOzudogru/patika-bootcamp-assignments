@@ -1,5 +1,5 @@
+package Week4.AdventureGame.src;
 import java.util.Scanner;
-
 public abstract class Location {
     public static Scanner input=new Scanner(System.in);
     private Player player;

@@ -1,5 +1,5 @@
+package Week4.AdventureGame.src;
 import java.util.Random;
-
 public abstract class BattleLocation extends Location {
 
     private Obstacle obstacle;

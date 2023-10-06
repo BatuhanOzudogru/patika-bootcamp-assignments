@@ -1,6 +1,5 @@
-import java.util.Arrays;
+package Week4.AdventureGame.src;
 import java.util.Scanner;
-
 public class Player {
     private Inventory inventory;
     private int damage;

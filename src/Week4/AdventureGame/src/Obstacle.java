@@ -1,3 +1,4 @@
+package Week4.AdventureGame.src;
 public class Obstacle {
     private int id;
     private int damage;

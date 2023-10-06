@@ -1,3 +1,4 @@
+package Week4.AdventureGame.src;
 public class Armor {
     private int id;
     private String name;

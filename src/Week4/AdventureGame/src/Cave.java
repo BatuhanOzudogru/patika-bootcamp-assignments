@@ -1,3 +1,4 @@
+package Week4.AdventureGame.src;
 public class Cave extends BattleLocation{
 
     public Cave(Player player) {

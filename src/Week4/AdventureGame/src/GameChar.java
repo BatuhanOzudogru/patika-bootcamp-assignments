@@ -1,3 +1,4 @@
+package Week4.AdventureGame.src;
 public abstract class GameChar {
     public String getName() {
         return name;

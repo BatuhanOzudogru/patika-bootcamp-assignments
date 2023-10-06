@@ -1,3 +1,4 @@
+package Week4.AdventureGame.src;
 public class Inventory {
     private Weapon weapon;
     private Armor armor;

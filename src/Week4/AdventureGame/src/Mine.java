@@ -1,5 +1,5 @@
+package Week4.AdventureGame.src;
 import java.util.Random;
-
 public class Mine extends BattleLocation {
     public Mine(Player player) {
         super(player, "Maden\uD83D\uDC8E", 6, new Viper(), "random", 5);

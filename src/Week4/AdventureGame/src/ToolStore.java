@@ -1,3 +1,4 @@
+package Week4.AdventureGame.src;
 public class ToolStore extends NormalLocation{
     public ToolStore(Player player) {
         super(player, "Eşya Dükkanı\uD83D\uDED2",2);
