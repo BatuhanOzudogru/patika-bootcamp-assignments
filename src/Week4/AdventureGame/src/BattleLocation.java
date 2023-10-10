@@ -27,7 +27,8 @@ public abstract class BattleLocation extends Location {
         System.out.println("Şuan buradasınız: " + this.getName());
         System.out.println("Dikkatli ol ! Burada " + obsNumber+" tane "+this.getObstacle().getName() + " yaşıyor!");
         System.out.print("<S>avaş⚔\uFE0F veya <K>aç\uD83C\uDFC3  : ");
-        String selectCase=input.nextLine().toUpperCase();
+        String selectCase = input.next() + input.nextLine().toUpperCase();
+        //String selectCase=input.nextLine().toUpperCase();
         if(selectCase.equals("S")&&combat(obsNumber)){
             System.out.println(this.getName()+" tüm düşmanları yendiniz.");
             System.out.println(this.award+" aldınız artık burada canavar yok");
@@ -65,6 +66,7 @@ public abstract class BattleLocation extends Location {
             while(this.getPlayer().getHealth()>0&&this.getObstacle().getHealth()>0){
                 System.out.print("<V>ur\uD83E\uDD4A veya <K>aç\uD83C\uDFC3 :");
                 String selectCombat=input.nextLine().toUpperCase();
+
                 if(selectCombat.equals("V")){
                     if(coinFlip()){
                         System.out.println("Siz vurdunuz");
