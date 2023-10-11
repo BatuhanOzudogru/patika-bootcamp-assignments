@@ -11,9 +11,9 @@ public class Phone extends Product {
     private static ArrayList<Phone> phones = new ArrayList<>();
     static Scanner input = new Scanner(System.in);
 
-    public Phone(String name, double price, double discountRate, int unitInStock, Brand brand, int memory, int ram, double screenSize, int camera, int batteryPower, String color) {
+    public Phone(int id, String name, double price, double discountRate, int unitInStock, Brand brand, int memory, int ram, double screenSize, int camera, int batteryPower, String color) {
         super(name, price, discountRate, unitInStock, brand, memory, ram, screenSize);
-        this.id = phones.size() + 1;
+        this.id = id;
         this.camera = camera;
         this.batteryPower = batteryPower;
         this.color = color;
@@ -21,7 +21,7 @@ public class Phone extends Product {
 
 
     static {
-        phones.add(new Phone("SAMSUNG GALAXY A51", 3199.0, 0.5, 5, new Brand("Samsung"), 128, 6, 6.5, 32, 4000, "Siyah"));
+        phones.add(new Phone(1, "SAMSUNG GALAXY A51", 3199.0, 0.5, 5, new Brand("Samsung"), 128, 6, 6.5, 32, 4000, "Siyah"));
     }
 
 
@@ -35,6 +35,7 @@ public class Phone extends Product {
         System.out.println("--------------------------------");
         System.out.print("Bir seçim yapınız : ");
         int select = input.nextInt();
+
         switch (select) {
             case 1:
                 printPhones();
@@ -42,23 +43,38 @@ public class Phone extends Product {
             case 2:
                 addPhone();
                 System.out.println("Ürün ekleme başarılı!");
+
                 break;
             case 3:
                 deletePhone();
                 phones.size();
                 System.out.println("Ürün silme başarılı!");
+
                 break;
             case 0:
+
                 break;
         }
+
+
     }
 
     public static void printPhones() {
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------");
+        System.out.format("| %-3s | %-30s | %-10s    | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s | %-10s |\n",
+                "ID", "ÜRÜN ADI", "FİYAT", "MARKA", "DEPOLAMA", "EKRAN", "KAMERA", "PİL", "RAM", "RENK");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------");
+
         for (Phone p : phones) {
-            System.out.print("ID " + p.getId() + " ÜRÜN ADI " + p.getName() + " FİYAT " + p.getPrice() + " MARKA " + p.getBrand().getBrandName() + " DEPOLAMA " + p.getMemory() + " EKRAN " + p.getScreenSize() + " KAMERA " + p.getCamera() + " PİL " + p.getBatteryPower() + " RAM " + p.getRam() + " RENK " + p.getColor());
-            System.out.println();
+            System.out.format("| %-3d | %-30s | %-10.2f TL | %-10s | %-10d | %-10.1f | %-10d | %-10d | %-10d | %-10s |\n",
+                    p.getId(), p.getName(), p.getPrice(), p.getBrand().getBrandName(),
+                    p.getMemory(), p.getScreenSize(), p.getCamera(), p.getBatteryPower(), p.getRam(), p.getColor());
         }
+
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------");
+
     }
+
 
     public static void addPhone() {
         System.out.println("Ürünün adını giriniz : ");
@@ -71,7 +87,7 @@ public class Phone extends Product {
         int unitInStock = input.nextInt();
         System.out.println("Lütfen telefonun markasını seçiniz : ");
         Brand.printBrands();
-        int selectedBrand = input.nextInt()-1;
+        int selectedBrand = input.nextInt() - 1;
         System.out.println("Ürünün hafızasını(GB) giriniz : ");
         int memory = input.nextInt();
         System.out.println("Ürünün RAM'ini giriniz : ");
@@ -85,12 +101,23 @@ public class Phone extends Product {
         System.out.println("Ürünün rengini giriniz : ");
         String color = input.next();
 
-        phones.add(new Phone(name, price, discountRate, unitInStock,Brand.selectBrand(selectedBrand), memory, ram, screenSize, camera, batteryPower, color));
+        int maxId = 0;
+        for (Phone p : phones) {
+            if (p.getId() > maxId) {
+                maxId = p.getId();
+            }
+        }
+
+        // Assign the new phone an ID one integer higher than the maximum ID
+        int newPhoneId = maxId + 1;
+
+        phones.add(new Phone(newPhoneId, name, price, discountRate, unitInStock, Brand.selectBrand(selectedBrand), memory, ram, screenSize, camera, batteryPower, color));
     }
-    public static void deletePhone(){
+
+    public static void deletePhone() {
         printPhones();
         System.out.println("Hangi telefonu silmek istiyorsunuz : ");
-        int selectId = input.nextInt()-1;
+        int selectId = input.nextInt() - 1;
         phones.remove(selectId);
 
     }

@@ -3,7 +3,7 @@ package Week5.PatikaStore;
 import java.util.Scanner;
 
 public class PatikaStore {
-    public void start(){
+    public void start() {
         System.out.println("Hoşgeldiniz");
         Scanner input = new Scanner(System.in);
         System.out.println("Patika Store Hoşgeldiniz.");
@@ -22,7 +22,7 @@ public class PatikaStore {
 
             switch (selected) {
                 case 1:
-                    System.out.println("1-Notebook İşlemleri");
+                    Notebook.notebookMenu();
                     break;
                 case 2:
                     Phone.phoneMenu();
