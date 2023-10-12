@@ -16,9 +16,9 @@ public class Notebook extends Product {
     }
 
     static {
-        notebooks.add(new Notebook(1, "HUAWEI Matebook 14", 7000, 0.5, 5, Brand.selectBrand(3), 512, 16, 14));
-        notebooks.add(new Notebook(2, "Lenovo V14 IGL", 3699, 0, 5, Brand.selectBrand(1), 1024, 8, 14));
-        notebooks.add(new Notebook(3, "ASUS Tuf Gaming", 8199, 0, 5, Brand.selectBrand(5), 2048, 32, 15.6));
+        notebooks.add(new Notebook(1, "HUAWEI Matebook 14", 7000, 0.5, 5, Brand.selectBrand(4), 512, 16, 14));
+        notebooks.add(new Notebook(2, "Lenovo V14 IGL", 3699, 0, 5, Brand.selectBrand(5), 1024, 8, 14));
+        notebooks.add(new Notebook(3, "ASUS Tuf Gaming", 8199, 0, 5, Brand.selectBrand(1), 2048, 32, 15.6));
     }
 
 
@@ -60,9 +60,9 @@ public class Notebook extends Product {
         System.out.println("-----------------------------------------------------------------------------------------------------------");
 
         for (Notebook n : notebooks) {
-            System.out.format("| %-2d | %-30s | %-10.2f TL | %-10s | %-10d | %-10.1f  | %-10d |\n",
-                    n.getId(), n.getName(), n.getPrice(), n.getBrand().getBrandName(),
-                    n.getStorage(), n.getScreenSize(), n.getRam());
+                System.out.format("| %-2d | %-30s | %-10.2f TL | %-10s | %-10d | %-10.1f  | %-10d |\n",
+                        n.getId(), n.getName(), n.getPrice(), n.getBrand().getBrandName(),
+                        n.getStorage(), n.getScreenSize(), n.getRam());
         }
         System.out.println("-----------------------------------------------------------------------------------------------------------");
 
@@ -178,10 +178,16 @@ public class Notebook extends Product {
     }
 
     public static void deleteNotebook() {
-        printNotebook();
+        printAllNotebooks();
         System.out.print("Select notebook by ID to delete : ");
-        int selectId = input.nextInt() - 1;
-        notebooks.remove(selectId);
+        int selectId = input.nextInt() ;
+        for (Notebook n : notebooks) {
+            if (n.getId()==selectId) {
+                notebooks.remove(n);
+                break;
+            }
+        }
+
 
     }
 

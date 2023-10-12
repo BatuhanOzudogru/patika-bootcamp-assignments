@@ -47,6 +47,7 @@ public class Brand  {
 
     }
     public static Brand selectBrand(int x){
+        Collections.sort(brands,Comparator.comparing(Brand::getBrandName));
         return brands.get(x);
     }
     public static String filterBrand(int x){
