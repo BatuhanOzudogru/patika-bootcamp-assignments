@@ -5,17 +5,15 @@ import java.util.Scanner;
 public class PatikaStore {
     public void start() {
         Scanner input = new Scanner(System.in);
-        System.out.println("\nPatika Store Hoşgeldiniz!!\n");
+        System.out.println("\nWelcome to Patika Store!!\n");
         boolean showMenu = true;
         while (showMenu) {
-            System.out.println("1-Notebook İşlemleri");
-            System.out.println("2-Cep Telefonu İşlemleri");
-            System.out.println("3-Marka Listele");
-            System.out.println("0-Çıkış  Yap");
+            System.out.println("1-Notebook Operations");
+            System.out.println("2-Phone Operations");
+            System.out.println("3-List Brands");
+            System.out.println("0-Exit");
             System.out.println("--------------------------------");
-            System.out.print("Bir seçim yapınız : ");
-            System.out.println();
-
+            System.out.print("Please make a choice : ");
             int selected = input.nextInt();
 
 
@@ -35,7 +33,7 @@ public class PatikaStore {
                     showMenu = false;
                     break;
                 default:
-                    System.out.println("Yanlış tuşlama yaptınız !!!");
+                    System.out.println("Invalid Entry");
 
             }
 

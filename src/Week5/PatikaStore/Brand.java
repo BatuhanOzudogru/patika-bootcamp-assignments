@@ -47,9 +47,10 @@ public class Brand  {
 
     }
     public static Brand selectBrand(int x){
-
-
-       return brands.get(x);
+        return brands.get(x);
+    }
+    public static String filterBrand(int x){
+        return brands.get(x).getBrandName();
     }
 
 
