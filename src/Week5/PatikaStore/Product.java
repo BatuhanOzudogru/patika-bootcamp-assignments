@@ -24,10 +24,6 @@ public abstract class Product {
         this.screenSize = screenSize;
     }
 
-
-
-
-
     public int getId() {
         return id;
     }
@@ -48,63 +44,20 @@ public abstract class Product {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public double getDiscountRate() {
-        return discountRate;
-    }
-
-    public void setDiscountRate(double discountRate) {
-        this.discountRate = discountRate;
-    }
-
-    public int getUnitInStock() {
-        return unitInStock;
-    }
-
-    public void setUnitInStock(int unitInStock) {
-        this.unitInStock = unitInStock;
-    }
-
     public Brand getBrand() {
         return brand;
-    }
-
-    public void setBrand(Brand brand) {
-        this.brand = brand;
     }
 
     public int getStorage() {
         return storage;
     }
 
-    public void setStorage(int storage) {
-        this.storage = storage;
-    }
-
     public int getRam() {
         return ram;
-    }
-
-    public void setRam(int ram) {
-        this.ram = ram;
     }
 
     public double getScreenSize() {
         return screenSize;
     }
 
-    public void setScreenSize(double screenSize) {
-        this.screenSize = screenSize;
-    }
-
-    /*public static ArrayList<Product> getProducts() {
-        return products;
-    }*/
-
-    /*public static void setProducts(ArrayList<Product> products) {
-        Product.products = products;
-    }*/
 }

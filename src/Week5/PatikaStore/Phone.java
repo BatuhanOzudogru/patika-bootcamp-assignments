@@ -63,9 +63,9 @@ public class Phone extends Product {
     }
 
     public static void printPhones() {
-        System.out.println("1-List All Phones");
-        System.out.println("2-List Phones By ID");
-        System.out.println("3-List Phones By Brand");
+        System.out.println("1-List/Filter Phones");
+        System.out.println("2-Filter Phones By ID");
+        System.out.println("3-Filter Phones By Brand");
         System.out.print("Make a choice : ");
         int number = input.nextInt();
         switch (number) {
@@ -210,36 +210,15 @@ public class Phone extends Product {
     public void setId(int id) {
         this.id = id;
     }
-
-    public static ArrayList<Phone> getPhones() {
-        return phones;
-    }
-
-    public static void setPhones(ArrayList<Phone> phones) {
-        Phone.phones = phones;
-    }
-
     public int getCamera() {
         return camera;
     }
-
-    public void setCamera(int camera) {
-        this.camera = camera;
-    }
-
     public int getBatteryPower() {
         return batteryPower;
-    }
-
-    public void setBatteryPower(int batteryPower) {
-        this.batteryPower = batteryPower;
     }
 
     public String getColor() {
         return color;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
 }

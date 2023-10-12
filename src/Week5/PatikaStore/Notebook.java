@@ -26,12 +26,12 @@ public class Notebook extends Product {
         boolean showMenu = true;
         while(showMenu){
             System.out.println("----Notebook Operations-----");
-            System.out.println("1-List all Notebooks");
+            System.out.println("1-List/Filter Notebooks");
             System.out.println("2-Add a New Notebook");
             System.out.println("3-Delete a Notebook");
             System.out.println("0-Exit");
             System.out.println("--------------------------------");
-            System.out.print("Make a choice ");
+            System.out.print("Make a choice :");
             int select = input.nextInt();
             switch (select) {
                 case 1:
@@ -195,11 +195,5 @@ public class Notebook extends Product {
         this.id = id;
     }
 
-    public static ArrayList<Notebook> getNotebooks() {
-        return notebooks;
-    }
 
-    public static void setNotebooks(ArrayList<Notebook> notebooks) {
-        Notebook.notebooks = notebooks;
-    }
 }
