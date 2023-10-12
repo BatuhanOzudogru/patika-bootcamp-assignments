@@ -4,9 +4,8 @@ import java.util.Scanner;
 
 public class PatikaStore {
     public void start() {
-        System.out.println("Hoşgeldiniz");
         Scanner input = new Scanner(System.in);
-        System.out.println("Patika Store Hoşgeldiniz.");
+        System.out.println("\nPatika Store Hoşgeldiniz!!\n");
         boolean showMenu = true;
         while (showMenu) {
             System.out.println("1-Notebook İşlemleri");
@@ -33,7 +32,6 @@ public class PatikaStore {
                     break;
 
                 case 0:
-                    System.out.println("0-Çıkış  Yap");
                     showMenu = false;
                     break;
                 default:

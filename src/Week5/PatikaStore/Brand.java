@@ -40,7 +40,7 @@ public class Brand  {
         int id=0;
         for(Brand b : brands){
             id++;
-            System.out.println(id+" "+b.brandName);
+            System.out.println(id+". "+b.brandName);
 
         }
 

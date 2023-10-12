@@ -1,7 +1,6 @@
 package Week5.PatikaStore;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public abstract class Product {
     private int id;
