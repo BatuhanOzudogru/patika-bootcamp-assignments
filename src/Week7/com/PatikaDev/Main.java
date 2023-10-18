@@ -1,7 +1,7 @@
-package com.patikadev;
+package Week7.com.PatikaDev;
 
 public class Main {
     public static void main(String[] args) {
-        Example ex= new Example();
     }
+
 }

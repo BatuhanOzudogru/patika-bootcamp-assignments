@@ -1,16 +1,14 @@
-package com.patikadev;
+package Week7.com.PatikaDev;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Example extends JFrame {
     private JPanel wrapper;
     private JPanel wtop;
     private JPanel wbottom;
     private JTextField fld_username;
-    private JPasswordField fld_password;
+    private JTextField fld_password;
     private JButton btn_login;
 
     public Example(){
@@ -40,9 +38,7 @@ public class Example extends JFrame {
         setLocation(x,y);
         setVisible(true);
         btn_login.addActionListener(e -> {
-            if(fld_username.getText().length()==0 || fld_password.getText().length()==0){
-                JOptionPane.showMessageDialog(null,"Tüm Alanları Doldurun ! ","Hata",JOptionPane.INFORMATION_MESSAGE);
-            }
+
         });
     }
 
