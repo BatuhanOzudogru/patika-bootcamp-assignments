@@ -2,6 +2,7 @@ package Week7.com.PatikaDev.View;
 
 import Week7.com.PatikaDev.Helper.*;
 import Week7.com.PatikaDev.Model.Operator;
+import Week7.com.PatikaDev.Model.Path;
 import Week7.com.PatikaDev.Model.User;
 
 import javax.swing.*;
@@ -10,8 +11,8 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 public class OperatorGUI extends JFrame {
@@ -35,9 +36,18 @@ public class OperatorGUI extends JFrame {
     private JTextField fld_searchUserUName;
     private JComboBox cmb_searchUserType;
     private JButton btn_userSearch;
+    private JPanel pnl_pathList;
+    private JScrollPane scrl_pathList;
+    private JTable tbl_pathList;
+    private JPanel pnl_pathAdd;
+    private JTextField fld_pathName;
+    private JButton btn_pathAdd;
     private DefaultTableModel mdl_userList;
     private Object[] row_userList;
     private final Operator operator;
+    private DefaultTableModel mdl_pathList;
+    private Object[] row_pathList;
+    private  JPopupMenu pathMenu;
 
     public OperatorGUI(Operator operator) {
         this.operator = operator;
@@ -51,7 +61,7 @@ public class OperatorGUI extends JFrame {
         setVisible(true);
         lbl_welcome.setText("Welcome " + operator.getName());
 
-        //ModelUserList
+        //UserList
         mdl_userList = new DefaultTableModel(){
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -100,6 +110,51 @@ public class OperatorGUI extends JFrame {
                 }
             }
         });
+
+        //PathList
+        pathMenu=new JPopupMenu();
+        JMenuItem updateMenu= new JMenuItem("Update");
+        JMenuItem deleteMenu= new JMenuItem("Delete");
+        pathMenu.add(updateMenu);
+        pathMenu.add(deleteMenu);
+
+        updateMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int select_id=Integer.parseInt(tbl_pathList.getValueAt(tbl_pathList.getSelectedRow(),0).toString());
+                UpdatePathGUI updateGUI =new UpdatePathGUI(Path.getFetch(select_id));
+                updateGUI.addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        loadPathModel();
+                    }
+                });
+            }
+        });
+
+        mdl_pathList= new DefaultTableModel();
+        Object[] col_pathList = {"ID", "Path Name"};
+        mdl_pathList.setColumnIdentifiers(col_pathList);
+        row_pathList=new Object[col_pathList.length];
+        loadPathModel();
+
+        tbl_pathList.setModel(mdl_pathList);
+        tbl_pathList.setComponentPopupMenu(pathMenu);
+        tbl_pathList.getTableHeader().setReorderingAllowed(false);
+        tbl_pathList.getColumnModel().getColumn(0).setMaxWidth(100);
+
+        tbl_pathList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                Point point = e.getPoint();
+                int selectedRow=tbl_pathList.rowAtPoint(point);
+                tbl_pathList.setRowSelectionInterval(selectedRow,selectedRow);
+
+
+            }
+        });
+
+
         btn_userAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -153,13 +208,42 @@ public class OperatorGUI extends JFrame {
                 dispose();
             }
         });
+        btn_pathAdd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(Helper.isFieldEmpty(fld_pathName)){
+                    Helper.showMassage("fill");
+                }else{
+                    if(Path.add(fld_pathName.getText())){
+                        Helper.showMassage("done");
+                        loadPathModel();
+                        fld_pathName.setText(null);
+                    }else{
+                        Helper.showMassage("error");
+                    }
+                }
+            }
+        });
+    }
+
+    private void loadPathModel() {
+        DefaultTableModel clearModel = (DefaultTableModel) tbl_pathList.getModel();
+        clearModel.setRowCount(0);
+        int i ;
+        for(Path obj : Path.getList()){
+            i=0;
+            row_pathList[i++]=obj.getId();
+            row_pathList[i++]=obj.getName();
+            mdl_pathList.addRow(row_pathList);
+        }
     }
 
     public void loadUserModel() {
         DefaultTableModel clearModel = (DefaultTableModel) tbl_userList.getModel();
         clearModel.setRowCount(0);
+        int i;
         for (User obj : User.getList()) {
-            int i = 0;
+            i=0;
             row_userList[i++] = obj.getId();
             row_userList[i++] = obj.getName();
             row_userList[i++] = obj.getuName();
