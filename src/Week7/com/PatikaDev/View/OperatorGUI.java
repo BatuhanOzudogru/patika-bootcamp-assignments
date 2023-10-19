@@ -7,9 +7,12 @@ import Week7.com.PatikaDev.Model.User;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class OperatorGUI extends JFrame {
     private JPanel wrapper;
@@ -28,6 +31,10 @@ public class OperatorGUI extends JFrame {
     private JButton btn_userAdd;
     private JTextField fld_userId;
     private JButton btn_userDelete;
+    private JTextField fld_searchUserName;
+    private JTextField fld_searchUserUName;
+    private JComboBox cmb_searchUserType;
+    private JButton btn_userSearch;
     private DefaultTableModel mdl_userList;
     private Object[] row_userList;
     private final Operator operator;
@@ -54,6 +61,8 @@ public class OperatorGUI extends JFrame {
                 return super.isCellEditable(row, column);
             }
         };
+
+
         Object[] col_userList = {"ID", "Name Surname", "Username", "Password", "Type"};
         mdl_userList.setColumnIdentifiers(col_userList);
         row_userList = new Object[col_userList.length];
@@ -71,6 +80,23 @@ public class OperatorGUI extends JFrame {
                     fld_userId.setText(select_userId);
                 }catch (Exception exception){
 
+                }
+            }
+        });
+        tbl_userList.getModel().addTableModelListener(new TableModelListener() {
+            @Override
+            public void tableChanged(TableModelEvent e) {
+                if(e.getType()==TableModelEvent.UPDATE){
+                    int user_id = Integer.parseInt(tbl_userList.getValueAt(tbl_userList.getSelectedRow(),0).toString());
+                    String user_name = tbl_userList.getValueAt(tbl_userList.getSelectedRow(),1).toString();
+                    String user_uname = tbl_userList.getValueAt(tbl_userList.getSelectedRow(),2).toString();
+                    String user_pass = tbl_userList.getValueAt(tbl_userList.getSelectedRow(),3).toString();
+                    String user_type = tbl_userList.getValueAt(tbl_userList.getSelectedRow(),4).toString();
+
+                    if(User.update(user_id,user_name,user_uname,user_pass,user_type)){
+                        Helper.showMassage("done");
+                    }
+                    loadUserModel();
                 }
             }
         });
@@ -110,12 +136,42 @@ public class OperatorGUI extends JFrame {
                 }
             }
         });
+        btn_userSearch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = fld_searchUserName.getText();
+                String uName= fld_searchUserUName.getText();
+                String type= cmb_searchUserType.getSelectedItem().toString();
+                String query=User.searchQuery(name,uName,type);
+                ArrayList<User> searchUser = User.searchUserList(query);
+                loadUserModel(searchUser);
+            }
+        });
+        btn_logout.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
     }
 
     public void loadUserModel() {
         DefaultTableModel clearModel = (DefaultTableModel) tbl_userList.getModel();
         clearModel.setRowCount(0);
         for (User obj : User.getList()) {
+            int i = 0;
+            row_userList[i++] = obj.getId();
+            row_userList[i++] = obj.getName();
+            row_userList[i++] = obj.getuName();
+            row_userList[i++] = obj.getPass();
+            row_userList[i++] = obj.getType();
+            mdl_userList.addRow(row_userList);
+        }
+    }
+    public void loadUserModel(ArrayList<User> list) {
+        DefaultTableModel clearModel = (DefaultTableModel) tbl_userList.getModel();
+        clearModel.setRowCount(0);
+        for (User obj : list) {
             int i = 0;
             row_userList[i++] = obj.getId();
             row_userList[i++] = obj.getName();
