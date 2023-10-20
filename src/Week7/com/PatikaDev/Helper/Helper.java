@@ -66,6 +66,19 @@ public class Helper {
 
     public static void optionPage() {
         UIManager.put("OptionPane.okButtonText", "Okay");
+        UIManager.put("OptionPane.yesButtonText", "YES");
+        UIManager.put("OptionPane.noButtonText", "NO");
+    }
+    public static boolean confirm(String str){
+        String msg;
+        switch (str){
+            case "sure":
+                msg= "Are you sure ?";
+                break;
+            default:
+                msg=str;
+        }
+        return JOptionPane.showConfirmDialog(null,msg,"Sure",JOptionPane.YES_NO_OPTION)==0;
     }
 
 }

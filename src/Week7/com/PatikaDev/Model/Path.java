@@ -91,5 +91,22 @@ public class Path {
         }
         return obj;
     }
+    public static boolean delete (int id ){
+        String query = "DELETE FROM path WHERE id = ?";
+        ArrayList<Course> courseList = Course.getList();
+        for(Course obj : courseList){
+            if(obj.getPath().getId()==id){
+                Course.delete(obj.getId());
+            }
+        }
+        try {
+            PreparedStatement pr = DBConnector.getInstance().prepareStatement(query);
+            pr.setInt(1,id);
+            return pr.executeUpdate() != -1;
+        } catch (SQLException e) {
+           e.printStackTrace();
+        }
+        return true;
+    }
 
 }
