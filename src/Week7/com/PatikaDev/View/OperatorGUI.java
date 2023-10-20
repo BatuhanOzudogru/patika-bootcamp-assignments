@@ -255,6 +255,7 @@ public class OperatorGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+                LoginGUI l = new LoginGUI();
             }
         });
         btn_pathAdd.addActionListener(new ActionListener() {
@@ -366,17 +367,6 @@ public class OperatorGUI extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
-        Helper.setLayout();
-        Operator op = new Operator();
-        op.setId(1);
-        op.setName("Batuhan Özüdoğru");
-        op.setuName("Batuhan");
-        op.setPass("123");
-        op.setType("operator");
-        DBConnector.getInstance();
-        OperatorGUI operatorGUI = new OperatorGUI(op);
-    }
 
 
 }
