@@ -15,7 +15,8 @@ public class LoginGUI extends JFrame{
     private JPanel wbottom;
     private JTextField fld_userUname;
     private JPasswordField fld_userPass;
-    private JButton btn__login;
+    private JButton btn_login;
+    private JButton btn_signup;
 
     public LoginGUI(){
         add(wrapper);
@@ -25,7 +26,7 @@ public class LoginGUI extends JFrame{
         setTitle(Config.PROJECT_TITLE);
         setResizable(false);
         setVisible(true);
-        btn__login.addActionListener(new ActionListener() {
+        btn_login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(Helper.isFieldEmpty(fld_userUname)||Helper.isFieldEmpty(fld_userPass)){
@@ -40,7 +41,7 @@ public class LoginGUI extends JFrame{
                                 OperatorGUI operatorGUI =new OperatorGUI((Operator) u);
                                 break;
                             case "educator":
-                                EducatorGUI educatorGUI = new EducatorGUI();
+                                EducatorGUI educatorGUI = new EducatorGUI(u);
                                 break;
                             case "student":
                                 StudentGUI studentGUI = new StudentGUI();
@@ -49,6 +50,12 @@ public class LoginGUI extends JFrame{
                         dispose();
                     }
                 }
+            }
+        });
+        btn_signup.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SignUpGUI s = new SignUpGUI();
             }
         });
     }

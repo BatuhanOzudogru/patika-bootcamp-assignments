@@ -26,6 +26,9 @@ public class Course {
         this.path=Path.getFetch(path_id);
         this.educator=User.getFetch(user_id);
     }
+    public Course(){
+
+    }
 
     public int getId() {
         return id;
@@ -154,5 +157,25 @@ public class Course {
             e.printStackTrace();
         }
         return true;
+    }
+    public static Course getFetch(int id) {
+        Course obj = null;
+        String query = "SELECT * FROM course WHERE id = ?";
+        try {
+            PreparedStatement pr = DBConnector.getInstance().prepareStatement(query);
+            pr.setInt(1, id);
+            ResultSet rs = pr.executeQuery();
+            if (rs.next()) {
+                obj = new Course();
+                obj.setId(rs.getInt("id"));
+                obj.setName(rs.getString("name"));
+            }
+
+            pr.close();
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return obj;
     }
 }
