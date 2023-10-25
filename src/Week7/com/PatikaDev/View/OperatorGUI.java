@@ -117,7 +117,7 @@ public class OperatorGUI extends JFrame {
                     String user_type = tbl_userList.getValueAt(tbl_userList.getSelectedRow(),4).toString();
 
                     if(User.update(user_id,user_name,user_uname,user_pass,user_type)){
-                        Helper.showMassage("done");
+                        Helper.showMessage("done");
                     }
                     loadUserModel();
                     loadEducatorCombo();
@@ -153,12 +153,12 @@ public class OperatorGUI extends JFrame {
             if(Helper.confirm("sure")){
                 int select_id=Integer.parseInt(tbl_pathList.getValueAt(tbl_pathList.getSelectedRow(),0).toString());
                 if(Path.delete(select_id)){
-                    Helper.showMassage("done");
+                    Helper.showMessage("done");
                     loadPathModel();
                     loadPathCombo();
                     loadCourseModel();
                 }else{
-                    Helper.showMassage("error");
+                    Helper.showMessage("error");
                 }
             }
 
@@ -205,14 +205,14 @@ public class OperatorGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (Helper.isFieldEmpty(fld_userName) || Helper.isFieldEmpty(fld_userUName) || Helper.isFieldEmpty(fld_userPass)) {
-                    Helper.showMassage("fill");
+                    Helper.showMessage("fill");
                 } else {
                     String name = fld_userName.getText();
                     String uname = fld_userUName.getText();
                     String pass = fld_userPass.getText();
                     String type = cmb_userType.getSelectedItem().toString();
                     if (User.add(name, uname, pass, type)) {
-                        Helper.showMassage("done");
+                        Helper.showMessage("done");
                         loadUserModel();
                         loadEducatorCombo();
                         fld_userName.setText(null);
@@ -224,18 +224,18 @@ public class OperatorGUI extends JFrame {
         });
         btn_userDelete.addActionListener(e -> {
             if (Helper.isFieldEmpty(fld_userId)) {
-                Helper.showMassage("fill");
+                Helper.showMessage("fill");
             } else {
                 if(Helper.confirm("sure")){
                     int userId = Integer.parseInt(fld_userId.getText());
                     if (User.delete(userId)) {
-                        Helper.showMassage("done");
+                        Helper.showMessage("done");
                         loadUserModel();
                         loadEducatorCombo();
                         loadCourseModel();
                         fld_userId.setText(null);
                     } else {
-                        Helper.showMassage("error");
+                        Helper.showMessage("error");
                     }
                 }
             }
@@ -262,15 +262,15 @@ public class OperatorGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(Helper.isFieldEmpty(fld_pathName)){
-                    Helper.showMassage("fill");
+                    Helper.showMessage("fill");
                 }else{
                     if(Path.add(fld_pathName.getText())){
-                        Helper.showMassage("done");
+                        Helper.showMessage("done");
                         loadPathModel();
                         loadPathCombo();
                         fld_pathName.setText(null);
                     }else{
-                        Helper.showMassage("error");
+                        Helper.showMessage("error");
                     }
                 }
             }
@@ -281,16 +281,16 @@ public class OperatorGUI extends JFrame {
                 Item pathItem= (Item)cmb_coursePath.getSelectedItem();
                 Item userItem=(Item) cmb_courseEducator.getSelectedItem();
                 if(Helper.isFieldEmpty(fld_courseName)||Helper.isFieldEmpty(fld_CourseLang)){
-                    Helper.showMassage("fill");
+                    Helper.showMessage("fill");
 
                 }else{
                     if(Course.add(userItem.getKey(),pathItem.getKey(),fld_courseName.getText(),fld_CourseLang.getText())){
-                        Helper.showMassage("done");
+                        Helper.showMessage("done");
                         loadCourseModel();
                         fld_CourseLang.setText(null);
                         fld_courseName.setText(null);
                     }else{
-                        Helper.showMassage("error");
+                        Helper.showMessage("error");
                     }
                 }
             }

@@ -27,10 +27,10 @@ public class UpdatePathGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(Helper.isFieldEmpty(fld_pathName)){
-                    Helper.showMassage("fill");
+                    Helper.showMessage("fill");
                 }else{
                     if(Path.update(path.getId(),fld_pathName.getText())){
-                        Helper.showMassage("done");
+                        Helper.showMessage("done");
 
                     }
                     dispose();

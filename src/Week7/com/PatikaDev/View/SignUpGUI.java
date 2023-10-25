@@ -2,7 +2,6 @@ package Week7.com.PatikaDev.View;
 
 import Week7.com.PatikaDev.Helper.Config;
 import Week7.com.PatikaDev.Helper.Helper;
-import Week7.com.PatikaDev.Model.Operator;
 import Week7.com.PatikaDev.Model.User;
 
 import javax.swing.*;
@@ -30,11 +29,11 @@ public class SignUpGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(Helper.isFieldEmpty(fld_signupPass)||Helper.isFieldEmpty(fld_signupUsername)||Helper.isFieldEmpty(fld_signupName)){
-                    Helper.showMassage("fill");
+                    Helper.showMessage("fill");
                 }else{
                     if(User.add(fld_signupName.getText(),fld_signupUsername.getText(),fld_signupPass.getText(),"student"))
                     {
-                        Helper.showMassage("done");
+                        Helper.showMessage("done");
                         dispose();
                     }
                 }

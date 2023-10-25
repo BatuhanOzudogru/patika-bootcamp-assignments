@@ -30,11 +30,11 @@ public class LoginGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(Helper.isFieldEmpty(fld_userUname)||Helper.isFieldEmpty(fld_userPass)){
-                    Helper.showMassage("fill");
+                    Helper.showMessage("fill");
                 }else{
                     User u = User.getFetch(fld_userUname.getText(),fld_userPass.getText());
                     if(u==null){
-                        Helper.showMassage("User not found !");
+                        Helper.showMessage("User not found !");
                     }else{
                         switch (u.getType()){
                             case "operator":

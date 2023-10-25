@@ -94,7 +94,7 @@ public class User {
         String query = "INSERT INTO user(name,uname,pass,type) VALUES (?,?,?,?)";
         User findUser = User.getFetch(uname);
         if (findUser != null) {
-            Helper.showMassage("This username has been added before. Please enter a different username");
+            Helper.showMessage("This username has been added before. Please enter a different username");
             return false;
         }
 
@@ -106,7 +106,7 @@ public class User {
             pr.setString(4, type);
             int response = pr.executeUpdate();
             if (response == -1) {
-                Helper.showMassage("error");
+                Helper.showMessage("error");
             }
             return response != -1;
 
@@ -187,10 +187,6 @@ public class User {
 
     public static boolean delete(int id) {
         String query = "DELETE FROM user WHERE id = ?";
-        ArrayList<Course>  courseList = Course.getListByUser(id);
-        for(Course c : courseList){
-            Course.delete(c.getId());
-        }
 
         try {
             PreparedStatement ps = DBConnector.getInstance().prepareStatement(query);
@@ -207,7 +203,7 @@ public class User {
         String query = "UPDATE user SET name=?,uname=?,pass=?,type=? WHERE id=?";
         User findUser = User.getFetch(uname);
         if (findUser != null && findUser.getId() != id) {
-            Helper.showMassage("This username has been added before. Please enter a different username");
+            Helper.showMessage("This username has been added before. Please enter a different username");
             return false;
         }
         try {

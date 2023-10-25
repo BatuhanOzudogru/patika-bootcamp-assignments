@@ -29,7 +29,7 @@ public class EducatorGUI extends JFrame{
     private JTextField fld_courseId;
     private DefaultTableModel mdl_myCourseList;
     private Object[] row_myCourseList;
-    private final User user;
+    private  User user;
 
     public EducatorGUI(User user)  {
         this.user=user;
@@ -55,7 +55,7 @@ public class EducatorGUI extends JFrame{
         };
 
 
-        mdl_myCourseList = new DefaultTableModel();
+
         Object[] col_myCourseList ={"Course Id","Course Name"};
         mdl_myCourseList.setColumnIdentifiers(col_myCourseList);
         row_myCourseList = new Object[col_myCourseList.length];
@@ -89,9 +89,10 @@ public class EducatorGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(Helper.isFieldEmpty(fld_courseName)){
-                    Helper.showMassage("fill");
+                    Helper.showMessage("fill");
                 }else{
                     Course c = Course.getFetch(Integer.parseInt(fld_courseId.getText()));
+
                     ContentGUI contentGUI = new ContentGUI(c);
                 }
 
