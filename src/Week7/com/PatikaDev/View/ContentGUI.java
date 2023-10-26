@@ -41,7 +41,7 @@ public class ContentGUI extends JFrame  {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle(Config.PROJECT_TITLE);
         setVisible(true);
-        fld_hiddenDelete.setVisible(false);
+        fld_hiddenDelete.setVisible(true);
         lbl_courseName.setText(course.getName());
 
 
@@ -63,9 +63,8 @@ public class ContentGUI extends JFrame  {
         quizMenu.add(addQuiz);
 
         addQuiz.addActionListener((ActionListener) e -> {
-            //int select_id=Integer.parseInt(tbl_contentList.getValueAt(tbl_contentList.getSelectedRow(),0).toString());
-            QuizGUI qGUI =new QuizGUI();
-
+            Content c = Content.getFetch(Integer.parseInt(fld_hiddenDelete.getText()));
+            QuizGUI qGUI =new QuizGUI(c);
         });
 
 
