@@ -59,7 +59,7 @@ public class Helper {
                 break;
             default:
                 msg = str;
-                title = "Massage";
+                title = "Message";
         }
         JOptionPane.showMessageDialog(null, msg, title, JOptionPane.INFORMATION_MESSAGE);
     }

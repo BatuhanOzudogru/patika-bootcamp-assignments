@@ -1,6 +1,8 @@
 package Week7.com.PatikaDev.Model;
 
 import Week7.com.PatikaDev.Helper.DBConnector;
+import Week7.com.PatikaDev.View.ContentGUI;
+import Week7.com.PatikaDev.View.OperatorGUI;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -146,13 +148,19 @@ public class Course {
         return courseList;
 
     }
-    public static boolean delete(int id) {
-        String query = "DELETE FROM course WHERE id = ?";
-        try {
-            PreparedStatement ps = DBConnector.getInstance().prepareStatement(query);
-            ps.setInt(1, id);
 
-            return ps.executeUpdate() != -1;
+    public static boolean delete (int id ){
+        String query = "DELETE FROM course WHERE id = ?";
+        ArrayList<Content> contentList = OperatorGUI.getContentList();
+        for(Content obj : contentList){
+            if(obj.getCourse().getId()==id){
+                Content.delete(obj.getId());
+            }
+        }
+        try {
+            PreparedStatement pr = DBConnector.getInstance().prepareStatement(query);
+            pr.setInt(1,id);
+            return pr.executeUpdate() != -1;
         } catch (SQLException e) {
             e.printStackTrace();
         }

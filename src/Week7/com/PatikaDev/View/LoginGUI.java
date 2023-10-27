@@ -44,7 +44,7 @@ public class LoginGUI extends JFrame{
                                 EducatorGUI educatorGUI = new EducatorGUI(u);
                                 break;
                             case "student":
-                                StudentGUI studentGUI = new StudentGUI();
+                                StudentGUI studentGUI = new StudentGUI(u);
                                 break;
                         }
                         dispose();

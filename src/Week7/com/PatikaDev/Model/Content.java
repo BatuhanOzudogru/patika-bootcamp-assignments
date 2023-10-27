@@ -219,4 +219,20 @@ public class Content {
         return true;
 
     }
+    public static boolean updateName(int id, String name) {
+        String query = "UPDATE content SET name=? WHERE id=?";
+
+
+        try {
+            PreparedStatement ps = DBConnector.getInstance().prepareStatement(query);
+            ps.setString(1, name);
+            ps.setInt(2, id);
+
+            return ps.executeUpdate() != -1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
+
+    }
 }

@@ -41,7 +41,7 @@ public class ContentGUI extends JFrame  {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle(Config.PROJECT_TITLE);
         setVisible(true);
-        fld_hiddenDelete.setVisible(true);
+        fld_hiddenDelete.setVisible(false);
         lbl_courseName.setText(course.getName());
 
 
