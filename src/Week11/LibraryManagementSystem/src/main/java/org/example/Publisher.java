@@ -17,7 +17,7 @@ public class Publisher {
     private String name;
 
 
-    @Column(name = "publisher_establishmentYear")
+    @Column(name = "publisher_establishment_year")
     private int establishmentYear;
 
     @Column(name = "publisher_address",length = 100)
