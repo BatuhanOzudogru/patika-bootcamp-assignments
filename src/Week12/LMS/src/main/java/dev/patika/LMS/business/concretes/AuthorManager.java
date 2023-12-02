@@ -3,7 +3,6 @@ package dev.patika.LMS.business.concretes;
 import dev.patika.LMS.business.abstracts.IAuthorService;
 import dev.patika.LMS.dal.IAuthorRepo;
 import dev.patika.LMS.dto.request.AuthorRequest;
-import dev.patika.LMS.dto.request.AuthorUpdateRequest;
 import dev.patika.LMS.dto.response.AuthorResponse;
 import dev.patika.LMS.entities.Author;
 import org.modelmapper.ModelMapper;
@@ -29,8 +28,7 @@ public class AuthorManager implements IAuthorService {
 
     @Override
     public AuthorResponse create(AuthorRequest authorRequest) {
-        //     5.İD       adı  A  country TR date 10
-        //                ADI  A  country TR DATE 11    CREATE
+
         Optional<Author> isAuthorExist = authorRepo.findByNameAndBirthDateAndCountry
                 (authorRequest.getName(), authorRequest.getBirthDate(), authorRequest.getCountry());
         if(isAuthorExist.isPresent()){
@@ -71,9 +69,8 @@ public class AuthorManager implements IAuthorService {
     }
 
     @Override
-    public AuthorResponse update(Long id, AuthorUpdateRequest authorUpdateRequest) {
-        // 5.id           adı  Atacan  country TR date 10
-        //                ADI  A  country TR DATE 10    UPDATE
+    public AuthorResponse update(Long id, AuthorRequest authorUpdateRequest) {
+
 
         Optional<Author> authorFromDb = authorRepo.findById(id);
 
@@ -93,16 +90,7 @@ public class AuthorManager implements IAuthorService {
         return this.modelMapper.map(this.authorRepo.save(updatedAuthor),AuthorResponse.class);
 
 
-      //  Author yeniAtacan= this.authorRepo.save((this.modelMapper.map(authorUpdateRequest, Author.class)));
-        //return this.modelMapper.map(yeniAtacan, AuthorResponse.class);
 
-
-/*
-        Author newAuthor = authorRepo.save(this.modelMapper.map(authorRequest, Author.class));
-        return this.modelMapper.map(newAuthor, AuthorResponse.class);
-         Author author = authorFromDb.get();
-        authorMapper.update(author, request);
-        return authorMapper.asOutput(authorRepository.save(author));*/
     }
 
     @Override

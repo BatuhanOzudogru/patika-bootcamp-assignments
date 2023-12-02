@@ -3,8 +3,6 @@ package dev.patika.LMS.api;
 import dev.patika.LMS.business.abstracts.IAuthorService;
 import dev.patika.LMS.dto.request.AuthorRequest;
 import dev.patika.LMS.dto.response.AuthorResponse;
-import dev.patika.LMS.dto.request.AuthorUpdateRequest;
-import dev.patika.LMS.entities.Author;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -46,7 +44,7 @@ public class AuthorController {
     }
     @PutMapping("/authors/update/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public AuthorResponse update(@PathVariable ("id") Long id,@RequestBody AuthorUpdateRequest authorUpdateRequest) {
+    public AuthorResponse update(@PathVariable ("id") Long id,@RequestBody AuthorRequest authorUpdateRequest) {
 
         return this.authorService.update(id,authorUpdateRequest);
     }
@@ -63,6 +61,7 @@ public class AuthorController {
         this.authorService.delete(id);
 
     }
+
 
 
 }

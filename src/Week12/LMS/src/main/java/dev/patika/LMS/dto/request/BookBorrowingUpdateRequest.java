@@ -9,9 +9,9 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthorUpdateRequest {
+public class BookBorrowingUpdateRequest {
     private long id;
     private String name;
-    private String country;
-    private LocalDate birthDate;
+    private LocalDate borrowingDate;
+    private LocalDate returnDate;
 }

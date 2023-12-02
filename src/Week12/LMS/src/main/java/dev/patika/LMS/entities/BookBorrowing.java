@@ -1,5 +1,7 @@
 package dev.patika.LMS.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,7 +32,8 @@ public class BookBorrowing {
     @Column(name = "return_date")
     private LocalDate returnDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "bookborrowing_book_id", referencedColumnName = "book_id")
+    @JsonIgnore
     private Book book;
 }

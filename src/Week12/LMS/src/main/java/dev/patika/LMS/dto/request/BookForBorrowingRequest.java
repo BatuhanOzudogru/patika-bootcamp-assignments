@@ -1,6 +1,5 @@
-package dev.patika.LMS.dto.response;
+package dev.patika.LMS.dto.request;
 
-import dev.patika.LMS.entities.Publisher;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,8 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthorBookResponse {
+public class BookForBorrowingRequest {
+    private Long id;
     private String name;
-    private int stock;
     private int publicationYear;
+    private int stock;
 }

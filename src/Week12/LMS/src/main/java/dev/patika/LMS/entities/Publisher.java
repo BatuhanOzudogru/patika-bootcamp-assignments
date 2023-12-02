@@ -1,5 +1,6 @@
 package dev.patika.LMS.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,5 +29,6 @@ public class Publisher {
     private String address;
 
     @OneToMany(mappedBy = "publisher", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private List<Book> bookList;
 }

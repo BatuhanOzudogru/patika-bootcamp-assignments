@@ -1,5 +1,7 @@
 package dev.patika.LMS;
 
+import dev.patika.LMS.business.concretes.BookBorrowingManager;
+import dev.patika.LMS.entities.BookBorrowing;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

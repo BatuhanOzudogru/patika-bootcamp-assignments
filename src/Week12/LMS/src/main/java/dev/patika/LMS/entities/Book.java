@@ -1,5 +1,6 @@
 package dev.patika.LMS.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,10 +22,10 @@ public class Book {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "publication_year")
+    @Column(name = "publication_year",nullable = false)
     private int publicationYear;
 
-    @Column(name = "stock")
+    @Column(name = "stock", nullable = false)
     private int stock;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -33,6 +34,7 @@ public class Book {
             joinColumns = {@JoinColumn(name = "book2category_book_id")},
             inverseJoinColumns = {@JoinColumn(name = "book2category_category_id")}
     )
+    @JsonIgnore
     private List<Category> categoryList;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -44,6 +46,7 @@ public class Book {
     private Author author;
 
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private List<BookBorrowing> bookBorrowingList;
 }
 
