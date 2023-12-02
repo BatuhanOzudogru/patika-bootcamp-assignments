@@ -34,6 +34,6 @@ public class BookBorrowing {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "bookborrowing_book_id", referencedColumnName = "book_id")
-    @JsonIgnore
+
     private Book book;
 }

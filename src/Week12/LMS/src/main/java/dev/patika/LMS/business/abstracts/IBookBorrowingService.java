@@ -11,7 +11,7 @@ public interface IBookBorrowingService {
     BookBorrowing getById (long id);
     BookBorrowing create(BookBorrowing bookBorrowing);
     void delete(long id);
-    BookBorrowing update(BookBorrowing bookBorrowing);
+    BookBorrowing update(long id,BookBorrowing bookBorrowing);
 
     List<BookBorrowing> findAll ();
 

@@ -36,7 +36,7 @@ public class BookBorrowingController {
     @ResponseStatus(HttpStatus.OK)
     public BookBorrowingUpdateRequest update(@PathVariable("id") Long id,@RequestBody BookBorrowing bookBorrowing) {
 
-        return this.modelMapper.map(this.bookBorrowingManager.update(bookBorrowing), BookBorrowingUpdateRequest.class);
+        return (this.modelMapper.map(this.bookBorrowingManager.update(id,bookBorrowing), BookBorrowingUpdateRequest.class));
     }
     @GetMapping("/borrows/{id}")
     @ResponseStatus(HttpStatus.OK)
