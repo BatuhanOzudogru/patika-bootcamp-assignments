@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <h2>Feedback Form</h2>
+    <form action="thank-you.html" method="get">
+        <!--First Name text input-->
+        <label for="fname">First Name :</label><br>
+        <input type="text" id="fname" name="fname" required><br>
+        <!--Last Name text input-->
+        <label for="lname">Last Name :</label><br>
+        <input type="text" id="lname" name="lname" required><br>
+        <!--Email input-->
+        <label for="email">Email :</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <!--Password input-->
+        <label for="password">Password :</label><br>
+        <input type="password" id="password" name="password" required><br>
+        <!--Radio-->
+        <p>Gender :</p>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Female</label><br>
+        <input type="radio" id="other" name="gender" value="other" required>
+        <label for="other">Other</label><br>
+        <!--CheckBox-->
+        <p>Favorite Fruit(s)</p>
+        <input type="checkbox" id="apple" name="apple" value="apple">
+        <label for="apple">Apple</label><br>
+        <input type="checkbox" id="banana" name="banana" value="banana">
+        <label for="banana">Banana</label><br>
+        <input type="checkbox" id="strawberry" name="strawberry" value="strawberry">
+        <label for="strawberry">Strawberry</label><br>
+        <!--TextArea-->
+        <label for="message">Your Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
