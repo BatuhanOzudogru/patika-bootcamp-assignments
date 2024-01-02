@@ -1,0 +1,1 @@
+<img src="img/gamecafebootstrap.gif" width="auto">
