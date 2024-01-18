@@ -1,0 +1,32 @@
+*{
+    margin :0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1{
+
+}
+.conteiner{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: block;
+}
+img{
+    margin-top: 3%;
+    padding-top:2%;
+    height: 400px;
+    width: 600px;
+}
+.button{
+    width: auto;
+    height: auto;
+    margin:60px;
+}
+.button button{
+    padding: 15px 15px;
+    border-radius: 5px;
+    background-color: brown;
+    color:aqua;
+
+}
