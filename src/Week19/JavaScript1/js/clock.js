@@ -1,6 +1,6 @@
 let namePrompt= prompt("Please enter your name");
 
-let nameDOM = document.querySelector('#myName');
+let nameDOM = document.querySelector("#myName");
 
 nameDOM.innerHTML = namePrompt;
 
@@ -10,8 +10,8 @@ function showTime() {
     let hour = date.getHours();
     let minute = date.getMinutes();
     let second = date.getSeconds();
-    m = checkTime(m);
-    s = checkTime(s);
+    minute = checkTime(minute);
+    second = checkTime(second);
     document.getElementById('myClock').innerHTML =  hour + ":" + minute + ":" + second + " " + day;
     setTimeout(showTime, 500);
   }
