@@ -1,5 +1,23 @@
 const menu = [
   {
+    id: 10,
+    title: "İskender",
+    category: "Türk",
+    price: 12.75,
+    img:
+      "https://iskenderiskenderoglu.com.tr//media/20171207/en-iyi-iskender-kebap-nerede-yenir_870x549.jpg",
+    desc: `Döner meat with yogurt-tomato sauce.`,
+  },
+  {
+    id: 11,
+    title: "Lahmacun",
+    category: "Türk",
+    price: 3.99,
+    img:
+      "https://cdn.yemek.com/mnresize/1250/833/uploads/2019/05/evde-lahmacun-keyfi-yemekcom.jpg",
+    desc: `A thin flatbread, topped with spiced ground meat`,
+  },
+  {
     id: 1,
     title: "Tteokbokki",
     category: "Korea",
@@ -80,24 +98,35 @@ const menu = [
       "https://www.justonecookbook.com/wp-content/uploads/2011/10/Dorayaki-New-500x400.jpg",
     desc: `Red bean paste dessert, serving with honey.`,
   },
+  
+
 ];
 
 const section = document.querySelector(".section-center");
 const btnContainer = document.querySelector(".btn-container");
 
-const categories = menu.reduce(
-  (values, item) => {
-    if (!values.includes(item.category)) {
-      values.push(item.category);
-    }
-    return values;
-  },
-  ["All"]
-);
+// const categories = menu.reduce(
+//   (values, item) => {
+//     if (!values.includes(item.category)) {
+//       values.push(item.category);
+//     }
+//     return values;
+//   },
+//   ["All"]
+// );
+
+const categories = [];
+categories.push("Türk");
+categories.push("All")
+menu.forEach(element => {
+  if(!categories.includes(element.category)){
+    categories.push(element.category);
+  }
+});
+
 
 const categoryList = () => {
-  const categoryBtns = categories
-    .map((category) => {
+  const categoryBtns = categories.map((category) => {
       return `<button class="btn btn-outline-dark btn-item" data-id=${category}>${category}</button>`;
     })
     .join("");
@@ -109,7 +138,7 @@ const categoryList = () => {
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const category = e.currentTarget.dataset.id;
-      console.log(category);
+    
       const menuCategory = menu.filter((menuItem) => {
         if (menuItem.category === category) {
           return menuItem;
@@ -150,208 +179,3 @@ const menuList = (menuItems) => {
 
 menuList(menu);
 categoryList();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const buttonAllDOM = document.querySelector(".btn-item[data-id='All']");
-// const buttonKoreaDOM = document.querySelector(".btn-item[data-id='Korea']");
-// const buttonJapanDOM = document.querySelector(".btn-item[data-id='Japan']");
-// const buttonChinaDOM = document.querySelector(".btn-item[data-id='China']");
-// const menuDiv = document.getElementById("menuDiv");
-
-
-
-// function allButton() {
-//   // Remove existing menu items
-//   if (menuDiv.firstChild) {
-//     menuDiv.innerHTML = '';
-//   }
-
-  
-//   // Create and append new menu items
-//   menu.forEach(element => {
-//       const meal = document.createElement("div");
-//       meal.className = "menu-items col-lg-6 col-sm-12";
-//       meal.innerHTML = `
-//             <img src="${element.img}" alt="${element.title}" class="photo">
-//             <div class="menu-info">
-//               <div class="menu-title">
-//                 <h4>${element.title}</h4>
-//                 <h4 class="price">${element.price}</h4>
-//               </div>
-//               <div class="menu-text">
-//                 ${element.desc}
-//               </div>
-//             </div>
-//         `;
-
-//       menuDiv.appendChild(meal);
-//   });
-// }
-
-
-
-// buttonKoreaDOM.addEventListener("click", function (){
-//   koreaButton();
-// })
-// buttonChinaDOM.addEventListener("click", function (){
-//   chinaButton();
-// })
-// buttonJapanDOM.addEventListener("click", function (){
-//   japanButton();
-// })
-
-
-// function koreaButton() {
-//   // Remove existing menu items
-//   if (menuDiv.firstChild) {
-//     menuDiv.innerHTML = '';
-//   }
-//   // Create and append new menu items
-//   menu.forEach(element => {
-//       if(element.category=='Korea'){
-//         const meal = document.createElement("div");
-//       meal.className = "menu-items col-lg-6 col-sm-12";
-//       meal.innerHTML = `
-//             <img src="${element.img}" alt="${element.title}" class="photo">
-//             <div class="menu-info">
-//               <div class="menu-title">
-//                 <h4>${element.title}</h4>
-//                 <h4 class="price">${element.price}</h4>
-//               </div>
-//               <div class="menu-text">
-//                 ${element.desc}
-//               </div>
-//             </div>
-//         `;
-
-//       menuDiv.appendChild(meal);
-//       }
-//   });
-// }
-// function japanButton() {
-//   // Remove existing menu items
-//   if (menuDiv.firstChild) {
-//     menuDiv.innerHTML = '';
-//   }
-//   // Create and append new menu items
-//   menu.forEach(element => {
-//       if(element.category=='Japan'){
-//         const meal = document.createElement("div");
-//       meal.className = "menu-items col-lg-6 col-sm-12";
-//       meal.innerHTML = `
-//             <img src="${element.img}" alt="${element.title}" class="photo">
-//             <div class="menu-info">
-//               <div class="menu-title">
-//                 <h4>${element.title}</h4>
-//                 <h4 class="price">${element.price}</h4>
-//               </div>
-//               <div class="menu-text">
-//                 ${element.desc}
-//               </div>
-//             </div>
-//         `;
-
-//       menuDiv.appendChild(meal);
-//       }
-//   });
-// }
-// function chinaButton() {
-//   // Remove existing menu items
-//   if (menuDiv.firstChild) {
-//     menuDiv.innerHTML = '';
-//   }
-//   // Create and append new menu items
-//   menu.forEach(element => {
-//       if(element.category=='China'){
-//         const meal = document.createElement("div");
-//       meal.className = "menu-items col-lg-6 col-sm-12";
-//       meal.innerHTML = `
-//             <img src="${element.img}" alt="${element.title}" class="photo">
-//             <div class="menu-info">
-//               <div class="menu-title">
-//                 <h4>${element.title}</h4>
-//                 <h4 class="price">${element.price}</h4>
-//               </div>
-//               <div class="menu-text">
-//                 ${element.desc}
-//               </div>
-//             </div>
-//         `;
-
-//       menuDiv.appendChild(meal);
-//       }
-//   });
-// }
-
-
-
-
