@@ -19,7 +19,6 @@ const BMI = () => {
       bmi = 0;
     }
     var left = "";
-console.log("bmi" + bmi)
     switch (true) {
       case bmi < 18.5:
         left = bmi * (15 / 18.5) + 7;
@@ -47,8 +46,6 @@ console.log("bmi" + bmi)
         console.log("calisti" + 5)
         break;
     }
-    console.log("left :" + left);
-    console.log(dynamicLeft);
   };
 
   return (

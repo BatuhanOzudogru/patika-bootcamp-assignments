@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import { TrainerContext } from "../../contexts/TrainerContext";
 
 const Trainers = () => {
