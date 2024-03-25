@@ -13,6 +13,7 @@ import "./Starship.css";
 
 function Starship() {
   const [starships, setStarships] = useState([]);
+  const [orginalStarships, setOrginalStarships] = useState({});
   const [reload, setReload] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [loadedStarships, setLoadedStarships] = useState(5);
@@ -21,13 +22,14 @@ function Starship() {
   useEffect(() => {
     getStarships().then((data) => {
       setStarships(data.results);
+      setOrginalStarships(data.results);
       setReload(false);
     });
   }, [reload]);
 
   const handleSearch = () => {
-    if (searchTerm.trim() === "") {
-      setStarships(starships);
+    if (searchTerm.trim() == "") {
+      setStarships(orginalStarships);
     } else {
       const results = starships.filter((item) =>
         item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -112,7 +114,7 @@ function Starship() {
       
         <div className="more-btn">
         {starships.length > loadedStarships && (
-          <Button variant="contained" sx={{backgroundColor: '#134e70'}} onClick={loadMoreStarships}>
+          <Button variant="contained" sx={{ backgroundColor: '#134e70', borderRadius: 7 }} onClick={loadMoreStarships}>
             Load More
           </Button>
         )}

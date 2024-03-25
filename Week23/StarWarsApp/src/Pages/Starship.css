@@ -14,6 +14,7 @@ header img {
 
 .search label {
   margin-right: 1em;
+  color: #c0c2d9;
 }
 
 .search input {
@@ -57,7 +58,11 @@ header img {
 }
 
 .more-btn {
-    margin-top: 2em;
-    text-align: center;
+  margin-left: 1em;
+  border-radius: 20px;
+  height: 2.3em;
+ 
+  margin-top: 2em;
+  text-align: center;
 }
 
