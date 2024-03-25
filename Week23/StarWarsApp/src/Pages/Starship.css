@@ -1,0 +1,65 @@
+header {
+  margin-top: 5em;
+  text-align: center;
+}
+
+header img {
+  width: 10%;
+}
+
+.search {
+  margin-top: 2em;
+  text-align: center;
+}
+
+.search label {
+  margin-right: 1em;
+}
+
+.search input {
+  border-radius: 15px;
+  height: 1.7em;
+  border-width: 2px;
+  border-style: solid;
+  padding-left: 1em;
+  background-color: #351111;
+  color: #c0c2d9;
+    
+    
+}
+.search-divider {
+  border: none;
+  border-top: 1px solid #773232; 
+  margin: 10px auto; 
+  width: 30%; 
+  
+}
+
+.search button {
+  margin-left: 1em;
+  border-radius: 20px;
+  height: 2.3em;
+  background-color: #134e70
+}
+
+.main-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+    margin-bottom: 2em;
+}
+
+.more-btn {
+    margin-top: 2em;
+    text-align: center;
+    
+}
+

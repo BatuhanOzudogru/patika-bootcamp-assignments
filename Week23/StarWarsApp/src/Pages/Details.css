@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .card-container {
+    max-width: 345px;
+    width: 100%;
+    
+  }
+  
+  .back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #184155;
+    border-radius: 50%; 
+  }
+  
+  @media (max-width: 600px) {
+    .back-button {
+      top: 10px;
+      left: 10px;
+    }
+  }
+  
