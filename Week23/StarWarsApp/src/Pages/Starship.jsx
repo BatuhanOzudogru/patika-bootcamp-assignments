@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import * as React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { getStarships } from "../API/Starship";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -13,7 +12,7 @@ import "./Starship.css";
 
 function Starship() {
   const [starships, setStarships] = useState([]);
-  const [orginalStarships, setOrginalStarships] = useState({});
+  const [orginalStarships, setOrginalStarships] = useState([]);
   const [reload, setReload] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [loadedStarships, setLoadedStarships] = useState(5);
@@ -31,7 +30,7 @@ function Starship() {
     if (searchTerm.trim() == "") {
       setStarships(orginalStarships);
     } else {
-      const results = starships.filter((item) =>
+      const results = orginalStarships.filter((item) =>
         item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         item.model.toLowerCase().includes(searchTerm.toLowerCase())
       );
@@ -45,9 +44,10 @@ function Starship() {
     setCardsMarginTop("3em"); // Update margin-top when loading more starships
   };
 
-  if (reload || starships.length === 0) {
+  if (reload) {
     return <h1>Loading...</h1>;
   }
+  
 
   return (
     <>
@@ -76,7 +76,7 @@ function Starship() {
           <hr className="search-divider" />
         </div>
   
-        <div className="cards" style={{ marginTop: cardsMarginTop }}> {/* Dynamically set margin-top */}
+        {starships.length>0 && <div className="cards" style={{ marginTop: cardsMarginTop }}>
           {starships.slice(0, loadedStarships).map((starship) => (
             <>
               <div className="card">
@@ -110,7 +110,10 @@ function Starship() {
             </>
           ))}
        
-        </div>
+        </div>}
+
+        {starships.length === 0 && <p className="not-found">No Starships Found</p>}
+
       
         <div className="more-btn">
         {starships.length > loadedStarships && (
